@@ -1,10 +1,11 @@
 .comment {
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1), 0px 5px 5px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
+  margin: 2.5rem 0rem;
+  background-color: white;
 }
 .header {
   display: flex;
@@ -45,13 +46,21 @@
   font-weight: 700;
 }
 
-.reply {
+.replyDiv {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
-.reply span {
+
+.deleteEdit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.reply {
   font-weight: 700;
   color: #5457b6;
 }
