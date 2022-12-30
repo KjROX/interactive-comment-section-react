@@ -35,9 +35,17 @@ const Comment = ({ commentData, currentUser }) => {
 
       <div className={classes.footer}>
         <LikeCount score={commentData.score} />
-        <ReplyDeleteEdit reply={currentUser !== commentData.user.username} />
+        <ReplyDeleteEdit
+          reply={currentUser !== commentData.user.username}
+          mobileDesign={true}
+        />
       </div>
-      {/*        <ReplyDeleteEdit reply={currentUser !== commentData.user.username} /> */}
+      <React.Fragment className={classes.replyDeleteEdit}>
+        <ReplyDeleteEdit
+          reply={currentUser !== commentData.user.username}
+          mobileDesign={false}
+        />
+      </React.Fragment>
     </div>
   );
 };

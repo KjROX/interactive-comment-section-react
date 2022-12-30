@@ -1,7 +1,11 @@
 import classes from "./ReplyDeleteEdit.module.css";
-const ReplyDeleteEdit = ({ reply }) => {
+const ReplyDeleteEdit = ({ reply, mobileDesign }) => {
   return (
-    <>
+    <div
+      className={`${
+        mobileDesign ? classes.mobileDesign : classes.notMobileDesign
+      }`}
+    >
       {reply ? (
         <div className={classes.replyDiv}>
           <img src="./images/icon-reply.svg" alt="" />
@@ -19,7 +23,7 @@ const ReplyDeleteEdit = ({ reply }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 export default ReplyDeleteEdit;

@@ -12,3 +12,10 @@
   color: #5457b6;
   font-weight: 700;
 }
+@media (min-width: 750px) {
+  .likeCount {
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+}
