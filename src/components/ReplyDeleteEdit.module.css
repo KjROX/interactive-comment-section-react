@@ -16,11 +16,23 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  min-width: fit-content;
 }
-
-.reply {
-  font-weight: 700;
+.delete {
+  color: red;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.edit {
   color: #5457b6;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 @media (min-width: 750px) {
   .mobileDesign {

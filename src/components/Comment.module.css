@@ -50,6 +50,7 @@
   }
   .footer {
     grid-area: box2;
+    align-items: flex-start;
   }
   .replyDeleteEdit {
     grid-area: box3;

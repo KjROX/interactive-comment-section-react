@@ -7,20 +7,23 @@ const ReplyDeleteEdit = ({ reply, mobileDesign }) => {
       }`}
     >
       {reply ? (
-        <div className={classes.replyDiv}>
+        <button
+          className={classes.replyDiv}
+          style={{ color: "#5457b6", fontWeight: "bold" }}
+        >
           <img src="./images/icon-reply.svg" alt="" />
-          <button className={classes.reply}>Reply</button>
-        </div>
+          Reply
+        </button>
       ) : (
         <div className={classes.deleteEdit}>
-          <div>
+          <button className={classes.delete}>
             <img src="./images/icon-delete.svg" alt="" />
-            <button style={{ color: "red" }}>Delete</button>
-          </div>
-          <div>
+            Delete
+          </button>
+          <button className={classes.edit}>
             <img src="./images/icon-edit.svg" alt="" />
-            <button style={{ color: "#5457b6" }}>Edit</button>
-          </div>
+            Edit
+          </button>
         </div>
       )}
     </div>
