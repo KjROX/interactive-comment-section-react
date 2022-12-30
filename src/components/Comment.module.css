@@ -7,6 +7,13 @@
   margin: 2.5rem 0rem;
   background-color: white;
 }
+.uiAdjuster {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: white;
+  gap: 1rem;
+}
 .header {
   display: flex;
   align-items: center;
@@ -31,36 +38,11 @@
   justify-content: space-between;
   align-items: center;
 }
-.likeCount {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  background-color: rgb(84, 87, 182, 0.1);
-  padding: 1rem;
-  width: 35%;
-  border-radius: 1rem;
-}
-.likeCount span {
-  color: #5457b6;
-  font-weight: 700;
-}
 
-.replyDiv {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.deleteEdit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.reply {
-  font-weight: 700;
-  color: #5457b6;
+@media (min-width: 750px) {
+  .comment {
+    flex-direction: row-reverse;
+  }
+  .uiAdjuster {
+  }
 }

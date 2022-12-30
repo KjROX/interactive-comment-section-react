@@ -1,0 +1,14 @@
+.likeCount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgb(84, 87, 182, 0.1);
+  padding: 1rem;
+  width: 35%;
+  border-radius: 1rem;
+}
+.likeCount span {
+  color: #5457b6;
+  font-weight: 700;
+}
