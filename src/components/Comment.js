@@ -40,7 +40,7 @@ const Comment = ({ commentData, currentUser }) => {
           mobileDesign={true}
         />
       </div>
-      <React.Fragment className={classes.replyDeleteEdit}>
+      <React.Fragment>
         <ReplyDeleteEdit
           reply={currentUser !== commentData.user.username}
           mobileDesign={false}

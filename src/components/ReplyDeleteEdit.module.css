@@ -13,10 +13,11 @@
 
 .deleteEdit {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  justify-content: end;
   gap: 1.5rem;
-  flex-direction: column;
+  /* flex-direction: column; */
+  min-width: fit-content;
 }
 .delete {
   color: red;
@@ -41,4 +42,7 @@
   .notMobileDesign {
     display: block;
   }
+  /* .deleteEdit {
+    flex-direction: row;
+  } */
 }

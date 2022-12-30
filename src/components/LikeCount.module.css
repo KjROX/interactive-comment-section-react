@@ -8,6 +8,9 @@
   width: 35%;
   border-radius: 1rem;
 }
+.likeCount img {
+  cursor: pointer;
+}
 .likeCount span {
   color: #5457b6;
   font-weight: 700;
