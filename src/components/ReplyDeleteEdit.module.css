@@ -13,8 +13,8 @@
 
 .deleteEdit {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  justify-content: end;
   gap: 1.5rem;
 }
 .delete {
@@ -40,6 +40,9 @@
   .notMobileDesign {
     display: block;
   }
+  /* .deleteEdit {
+    flex-direction: row;
+  } */
   .deleteEdit {
     flex-direction: column;
   }
