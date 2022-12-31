@@ -18,10 +18,7 @@ body {
   max-width: 1080px;
   margin: auto;
 }
-.replies {
-  padding-left: 1.5rem;
-  border-left: 0.5px solid rgb(103, 114, 126, 0.3);
-}
+
 button {
   border: none;
   background-color: white;
@@ -29,8 +26,5 @@ button {
 @media (min-width: 750px) {
   .App {
     padding: 7rem;
-  }
-  .replies {
-    padding-left: 5rem;
   }
 }

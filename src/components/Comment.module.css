@@ -43,7 +43,7 @@
   .comment {
     display: grid;
     grid-template-columns: 5% 1fr 10%;
-    grid-template-areas: "box2 box1 box3";
+    grid-template-areas: "box2 box1";
   }
   .uiAdjuster {
     grid-area: box1;
@@ -51,8 +51,5 @@
   .footer {
     grid-area: box2;
     align-items: flex-start;
-  }
-  .replyDeleteEdit {
-    grid-area: box3;
   }
 }
