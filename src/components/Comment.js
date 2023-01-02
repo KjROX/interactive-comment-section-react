@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Comment.module.css";
 import LikeCount from "./LikeCount";
 import ReplyDeleteEdit from "./ReplyDeleteEdit";
-const Comment = ({ commentData, currentUser }) => {
+const Comment = ({ commentData, currentUser, likeCountUpdater }) => {
   return (
     <div className={classes.comment}>
       <div className={classes.uiAdjuster}>
@@ -34,7 +34,11 @@ const Comment = ({ commentData, currentUser }) => {
       </div>
 
       <div className={classes.footer}>
-        <LikeCount score={commentData.score} />
+        <LikeCount
+          score={commentData.score}
+          commentId={commentData.id}
+          likeCountUpdater={likeCountUpdater}
+        />
         <ReplyDeleteEdit
           reply={currentUser !== commentData.user.username}
           mobileDesign={true}

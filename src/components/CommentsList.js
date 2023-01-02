@@ -2,24 +2,26 @@ import React from "react";
 import Comment from "./Comment";
 import classes from "./CommentsList.module.css";
 
-const CommentsList = ({ data }) => {
+const CommentsList = ({ comments, currentUser, likeCountUpdater }) => {
   return (
     <>
-      {data.comments.map((comment, i) => {
+      {comments.map((comment, i) => {
         if (comment.replies.length !== 0) {
           return (
             <React.Fragment key={i + 10}>
               <Comment
                 key={comment.id}
                 commentData={comment}
-                currentUser={data.currentUser.username}
+                currentUser={currentUser.username}
+                likeCountUpdater={likeCountUpdater}
               />
               <div className={classes.replies}>
                 {comment.replies.map((reply) => (
                   <Comment
                     key={reply.id}
                     commentData={reply}
-                    currentUser={data.currentUser.username}
+                    currentUser={currentUser.username}
+                    likeCountUpdater={likeCountUpdater}
                   />
                 ))}
               </div>
@@ -30,7 +32,8 @@ const CommentsList = ({ data }) => {
             <Comment
               key={comment.id}
               commentData={comment}
-              currentUser={data.currentUser.username}
+              currentUser={currentUser.username}
+              likeCountUpdater={likeCountUpdater}
             />
           );
         }
