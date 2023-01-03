@@ -14,6 +14,12 @@ function App() {
         return prevComments.map((prevComment) => {
           if (prevComment.id === commentId) {
             prevComment.score++;
+          } else {
+            prevComment.replies.forEach((reply) => {
+              if (reply.id === commentId) {
+                reply.score++;
+              }
+            });
           }
           return prevComment;
         });
@@ -23,6 +29,12 @@ function App() {
         return prevComments.map((prevComment) => {
           if (prevComment.id === commentId) {
             prevComment.score--;
+          } else {
+            prevComment.replies.forEach((reply) => {
+              if (reply.id === commentId) {
+                reply.score--;
+              }
+            });
           }
           return prevComment;
         });
