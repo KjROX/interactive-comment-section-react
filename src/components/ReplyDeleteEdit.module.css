@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 
 .deleteEdit {
@@ -24,6 +25,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 .edit {
   color: #5457b6;
@@ -32,6 +34,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  cursor: pointer;
 }
 @media (min-width: 750px) {
   .mobileDesign {

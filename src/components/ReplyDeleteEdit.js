@@ -1,5 +1,5 @@
 import classes from "./ReplyDeleteEdit.module.css";
-const ReplyDeleteEdit = ({ reply, mobileDesign }) => {
+const ReplyDeleteEdit = ({ reply, mobileDesign, replyButtonHandler }) => {
   return (
     <div
       className={`${
@@ -10,6 +10,9 @@ const ReplyDeleteEdit = ({ reply, mobileDesign }) => {
         <button
           className={classes.replyDiv}
           style={{ color: "#5457b6", fontWeight: "bold" }}
+          onClick={() => {
+            replyButtonHandler();
+          }}
         >
           <img src="./images/icon-reply.svg" alt="" />
           Reply
