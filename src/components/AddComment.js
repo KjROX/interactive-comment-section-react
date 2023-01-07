@@ -39,7 +39,9 @@ const AddComment = ({
           alt="current-user-dp"
           className={classes.image}
         />
-        <button className={classes.button}>Send</button>
+        <button className={classes.button} disabled={inputValue.length === 0}>
+          Send
+        </button>
       </div>
     </form>
   );

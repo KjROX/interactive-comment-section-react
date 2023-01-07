@@ -25,3 +25,6 @@
   color: white;
   border-radius: 1rem;
 }
+.button:disabled {
+  background-color: rgb(84, 87, 182, 0.5);
+}
