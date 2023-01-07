@@ -2,7 +2,12 @@ import React from "react";
 import Comment from "./Comment";
 import classes from "./CommentsList.module.css";
 
-const CommentsList = ({ comments, currentUser, likeCountUpdater }) => {
+const CommentsList = ({
+  comments,
+  currentUser,
+  likeCountUpdater,
+  sendButtonHandler,
+}) => {
   return (
     <>
       {comments.map((comment, i) => {
@@ -12,16 +17,18 @@ const CommentsList = ({ comments, currentUser, likeCountUpdater }) => {
               <Comment
                 key={comment.id}
                 commentData={comment}
-                currentUser={currentUser.username}
+                currentUser={currentUser}
                 likeCountUpdater={likeCountUpdater}
+                sendButtonHandler={sendButtonHandler}
               />
               <div className={classes.replies}>
                 {comment.replies.map((reply) => (
                   <Comment
                     key={reply.id}
                     commentData={reply}
-                    currentUser={currentUser.username}
+                    currentUser={currentUser}
                     likeCountUpdater={likeCountUpdater}
+                    sendButtonHandler={sendButtonHandler}
                   />
                 ))}
               </div>
@@ -32,8 +39,9 @@ const CommentsList = ({ comments, currentUser, likeCountUpdater }) => {
             <Comment
               key={comment.id}
               commentData={comment}
-              currentUser={currentUser.username}
+              currentUser={currentUser}
               likeCountUpdater={likeCountUpdater}
+              sendButtonHandler={sendButtonHandler}
             />
           );
         }

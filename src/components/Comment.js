@@ -3,10 +3,25 @@ import AddComment from "./AddComment";
 import classes from "./Comment.module.css";
 import LikeCount from "./LikeCount";
 import ReplyDeleteEdit from "./ReplyDeleteEdit";
-const Comment = ({ commentData, currentUser, likeCountUpdater }) => {
+import { formatDistanceToNowStrict } from "date-fns";
+
+const Comment = ({
+  commentData,
+  currentUser,
+  likeCountUpdater,
+  sendButtonHandler,
+}) => {
   const [showAddComment, setShowAddComment] = useState(false);
   const replyButtonHandler = () => {
     setShowAddComment((prevState) => !prevState);
+  };
+
+  const dateFormatter = (date) => {
+    if (typeof date === "string") {
+      return date;
+    } else {
+      return formatDistanceToNowStrict(date, { addSuffix: true });
+    }
   };
 
   return (
@@ -20,7 +35,7 @@ const Comment = ({ commentData, currentUser, likeCountUpdater }) => {
               alt=""
             />
             <span className={classes.name}>{commentData.user.username}</span>
-            {currentUser === commentData.user.username ? (
+            {currentUser.username === commentData.user.username ? (
               <span
                 style={{
                   color: "white",
@@ -34,7 +49,9 @@ const Comment = ({ commentData, currentUser, likeCountUpdater }) => {
             ) : (
               ""
             )}
-            <span className={classes.date}>{commentData.createdAt}</span>
+            <span className={classes.date}>
+              {dateFormatter(commentData.createdAt)}
+            </span>
           </div>
           <div className={classes.body}>
             <span style={{ color: "#5457b6", fontWeight: "bold" }}>
@@ -51,20 +68,26 @@ const Comment = ({ commentData, currentUser, likeCountUpdater }) => {
             likeCountUpdater={likeCountUpdater}
           />
           <ReplyDeleteEdit
-            reply={currentUser !== commentData.user.username}
+            reply={currentUser.username !== commentData.user.username}
             mobileDesign={true}
             replyButtonHandler={replyButtonHandler}
           />
         </div>
         <React.Fragment>
           <ReplyDeleteEdit
-            reply={currentUser !== commentData.user.username}
+            reply={currentUser.username !== commentData.user.username}
             mobileDesign={false}
             replyButtonHandler={replyButtonHandler}
           />
         </React.Fragment>
       </div>
-      {showAddComment && <AddComment />}
+      {showAddComment && (
+        <AddComment
+          currentUser={currentUser}
+          replyingToCommentData={commentData}
+          sendButtonHandler={sendButtonHandler}
+        />
+      )}
     </>
   );
 };

@@ -42,6 +42,28 @@ function App() {
     }
   };
 
+  const sendButtonHandler = (replyingToCommentData, replyData) => {
+    if (replyingToCommentData.replies) {
+      setComments((prevComments) => {
+        return prevComments.map((prevComment) => {
+          if (prevComment.id === replyingToCommentData.id) {
+            prevComment.replies.push(replyData);
+          }
+          return prevComment;
+        });
+      });
+    } else {
+      setComments((prevComments) => {
+        return prevComments.map((prevComment) => {
+          if (prevComment.id === replyingToCommentData.replyingUnderCommentId) {
+            prevComment.replies.push(replyData);
+          }
+          return prevComment;
+        });
+      });
+    }
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -49,8 +71,9 @@ function App() {
           comments={comments}
           currentUser={data.currentUser}
           likeCountUpdater={likeCountUpdater}
+          sendButtonHandler={sendButtonHandler}
         />
-        <AddComment />
+        <AddComment currentUser={data.currentUser} />
       </div>
     </div>
   );

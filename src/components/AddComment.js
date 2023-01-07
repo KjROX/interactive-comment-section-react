@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 import classes from "./AddComment.module.css";
+import { v4 as uuid } from "uuid";
 
-const AddComment = () => {
+const AddComment = ({
+  currentUser,
+  replyingToCommentData,
+  sendButtonHandler,
+}) => {
   const [inputValue, setInputValue] = useState("");
-
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(inputValue);
+    const replyData = {
+      id: uuid(),
+      content: inputValue,
+      createdAt: Date.now(),
+      score: 0,
+      replyingTo: replyingToCommentData.user.username,
+      user: currentUser,
+      replyingUnderCommentId: replyingToCommentData.id,
+    };
+    sendButtonHandler(replyingToCommentData, replyData);
   };
 
   return (
@@ -22,8 +35,8 @@ const AddComment = () => {
       />
       <div className={classes.div}>
         <img
-          src="./images/avatars/image-amyrobson.png"
-          alt=""
+          src={currentUser.image.png}
+          alt="current-user-dp"
           className={classes.image}
         />
         <button className={classes.button}>Send</button>
