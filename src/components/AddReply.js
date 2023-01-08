@@ -1,20 +1,21 @@
+import React, { useState } from "react";
 import classes from "./AddReply.module.css";
-import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const AddComment = ({ currentUser, AddCommentHandler }) => {
+const AddReply = ({ currentUser, replyingToCommentData, AddReplyHandler }) => {
   const [inputValue, setInputValue] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    const newCommentData = {
+    const replyData = {
       id: uuid(),
       content: inputValue,
       createdAt: Date.now(),
       score: 0,
+      replyingTo: replyingToCommentData.user.username,
       user: currentUser,
-      replies: [],
+      replyingUnderCommentId: replyingToCommentData.id,
     };
-    AddCommentHandler(newCommentData);
+    AddReplyHandler(replyingToCommentData, replyData);
     setInputValue("");
   };
 
@@ -42,4 +43,5 @@ const AddComment = ({ currentUser, AddCommentHandler }) => {
     </form>
   );
 };
-export default AddComment;
+
+export default AddReply;

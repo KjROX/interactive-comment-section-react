@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddComment from "./AddComment";
+import AddReply from "./AddReply";
 import classes from "./Comment.module.css";
 import LikeCount from "./LikeCount";
 import ReplyDeleteEdit from "./ReplyDeleteEdit";
@@ -9,7 +9,7 @@ const Comment = ({
   commentData,
   currentUser,
   likeCountUpdater,
-  sendButtonHandler,
+  AddReplyHandler,
 }) => {
   const [showAddComment, setShowAddComment] = useState(false);
   const replyButtonHandler = () => {
@@ -82,10 +82,10 @@ const Comment = ({
         </React.Fragment>
       </div>
       {showAddComment && (
-        <AddComment
+        <AddReply
           currentUser={currentUser}
           replyingToCommentData={commentData}
-          sendButtonHandler={sendButtonHandler}
+          AddReplyHandler={AddReplyHandler}
         />
       )}
     </>

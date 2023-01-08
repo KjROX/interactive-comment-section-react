@@ -1,9 +1,9 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import AddComment from "./components/AddComment";
 import CommentsList from "./components/CommentsList";
 
 import data from "./data/data.json";
+import AddComment from "./components/AddComment";
 
 function App() {
   const [comments, setComments] = useState(data.comments);
@@ -53,7 +53,7 @@ function App() {
     }
   };
 
-  const sendButtonHandler = (replyingToCommentData, replyData) => {
+  const AddReplyHandler = (replyingToCommentData, replyData) => {
     if (replyingToCommentData.replies) {
       setComments((prevComments) => {
         return prevComments.map((prevComment) => {
@@ -75,6 +75,13 @@ function App() {
     }
   };
 
+  const AddCommentHandler = (newCommentData) => {
+    setComments((prevComments) => {
+      prevComments.push(newCommentData);
+      return prevComments;
+    });
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -82,9 +89,12 @@ function App() {
           comments={comments}
           currentUser={data.currentUser}
           likeCountUpdater={likeCountUpdater}
-          sendButtonHandler={sendButtonHandler}
+          AddReplyHandler={AddReplyHandler}
         />
-        <AddComment currentUser={data.currentUser} />
+        <AddComment
+          currentUser={data.currentUser}
+          AddCommentHandler={AddCommentHandler}
+        />
       </div>
     </div>
   );

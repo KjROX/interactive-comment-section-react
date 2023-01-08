@@ -6,7 +6,7 @@ const CommentsList = ({
   comments,
   currentUser,
   likeCountUpdater,
-  sendButtonHandler,
+  AddReplyHandler,
 }) => {
   return (
     <>
@@ -19,7 +19,7 @@ const CommentsList = ({
                 commentData={comment}
                 currentUser={currentUser}
                 likeCountUpdater={likeCountUpdater}
-                sendButtonHandler={sendButtonHandler}
+                AddReplyHandler={AddReplyHandler}
               />
               <div className={classes.replies}>
                 {comment.replies.map((reply) => (
@@ -28,7 +28,7 @@ const CommentsList = ({
                     commentData={reply}
                     currentUser={currentUser}
                     likeCountUpdater={likeCountUpdater}
-                    sendButtonHandler={sendButtonHandler}
+                    AddReplyHandler={AddReplyHandler}
                   />
                 ))}
               </div>
@@ -41,7 +41,7 @@ const CommentsList = ({
               commentData={comment}
               currentUser={currentUser}
               likeCountUpdater={likeCountUpdater}
-              sendButtonHandler={sendButtonHandler}
+              AddReplyHandler={AddReplyHandler}
             />
           );
         }
