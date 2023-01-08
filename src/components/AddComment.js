@@ -20,6 +20,7 @@ const AddComment = ({
       replyingUnderCommentId: replyingToCommentData.id,
     };
     sendButtonHandler(replyingToCommentData, replyData);
+    setInputValue("");
   };
 
   return (

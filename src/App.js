@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddComment from "./components/AddComment";
 import CommentsList from "./components/CommentsList";
 
@@ -7,6 +7,17 @@ import data from "./data/data.json";
 
 function App() {
   const [comments, setComments] = useState(data.comments);
+
+  useEffect(() => {
+    const localComments = JSON.parse(localStorage.getItem("localComments"));
+    if (localComments) {
+      setComments(localComments);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("localComments", JSON.stringify(comments));
+  }, [comments]);
 
   const likeCountUpdater = (symbol, commentId) => {
     if (symbol === "+") {
