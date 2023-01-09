@@ -9,7 +9,8 @@ const Comment = ({
   commentData,
   currentUser,
   likeCountUpdater,
-  AddReplyHandler,
+  addReplyHandler,
+  deleteButtonHandler,
 }) => {
   const [showAddComment, setShowAddComment] = useState(false);
   const replyButtonHandler = () => {
@@ -71,6 +72,8 @@ const Comment = ({
             reply={currentUser.username !== commentData.user.username}
             mobileDesign={true}
             replyButtonHandler={replyButtonHandler}
+            deleteButtonHandler={deleteButtonHandler}
+            commentData={commentData}
           />
         </div>
         <React.Fragment>
@@ -78,6 +81,8 @@ const Comment = ({
             reply={currentUser.username !== commentData.user.username}
             mobileDesign={false}
             replyButtonHandler={replyButtonHandler}
+            deleteButtonHandler={deleteButtonHandler}
+            commentData={commentData}
           />
         </React.Fragment>
       </div>
@@ -85,7 +90,7 @@ const Comment = ({
         <AddReply
           currentUser={currentUser}
           replyingToCommentData={commentData}
-          AddReplyHandler={AddReplyHandler}
+          addReplyHandler={addReplyHandler}
         />
       )}
     </>

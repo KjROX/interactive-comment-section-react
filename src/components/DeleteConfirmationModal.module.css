@@ -1,0 +1,69 @@
+.backdrop {
+  display: block;
+  min-height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+  background-color: white;
+  width: 80%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.3rem;
+  border-radius: 1rem;
+  font-family: "Rubik", sans-serif;
+}
+
+.p {
+  color: #67727e;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.cancel {
+  padding: 0.5rem 1rem;
+  background-color: rgba(50, 65, 82, 0.8);
+  color: white;
+  border-radius: 1rem;
+  width: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+.delete {
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 1rem;
+  width: 50%;
+  background-color: rgb(255, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+  .modal {
+    width: 30%;
+  }
+  .cancel {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+  .delete {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+}

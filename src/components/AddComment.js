@@ -2,7 +2,7 @@ import classes from "./AddReply.module.css";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 
-const AddComment = ({ currentUser, AddCommentHandler }) => {
+const AddComment = ({ currentUser, addCommentHandler }) => {
   const [inputValue, setInputValue] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ const AddComment = ({ currentUser, AddCommentHandler }) => {
       user: currentUser,
       replies: [],
     };
-    AddCommentHandler(newCommentData);
+    addCommentHandler(newCommentData);
     setInputValue("");
   };
 

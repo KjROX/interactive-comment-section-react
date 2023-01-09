@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "./AddReply.module.css";
 import { v4 as uuid } from "uuid";
 
-const AddReply = ({ currentUser, replyingToCommentData, AddReplyHandler }) => {
+const AddReply = ({ currentUser, replyingToCommentData, addReplyHandler }) => {
   const [inputValue, setInputValue] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const AddReply = ({ currentUser, replyingToCommentData, AddReplyHandler }) => {
       user: currentUser,
       replyingUnderCommentId: replyingToCommentData.id,
     };
-    AddReplyHandler(replyingToCommentData, replyData);
+    addReplyHandler(replyingToCommentData, replyData);
     setInputValue("");
   };
 

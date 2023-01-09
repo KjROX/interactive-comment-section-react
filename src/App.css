@@ -18,6 +18,10 @@ body {
   max-width: 1080px;
   margin: auto;
 }
+.App.disable-scroll {
+  height: 100vh;
+  overflow: hidden;
+}
 
 button {
   border: none;

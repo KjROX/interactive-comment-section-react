@@ -1,5 +1,11 @@
 import classes from "./ReplyDeleteEdit.module.css";
-const ReplyDeleteEdit = ({ reply, mobileDesign, replyButtonHandler }) => {
+const ReplyDeleteEdit = ({
+  reply,
+  mobileDesign,
+  replyButtonHandler,
+  deleteButtonHandler,
+  commentData,
+}) => {
   return (
     <div
       className={`${
@@ -19,7 +25,12 @@ const ReplyDeleteEdit = ({ reply, mobileDesign, replyButtonHandler }) => {
         </button>
       ) : (
         <div className={classes.deleteEdit}>
-          <button className={classes.delete}>
+          <button
+            className={classes.delete}
+            onClick={() => {
+              deleteButtonHandler(commentData);
+            }}
+          >
             <img src="./images/icon-delete.svg" alt="" />
             Delete
           </button>

@@ -4,9 +4,14 @@ import CommentsList from "./components/CommentsList";
 
 import data from "./data/data.json";
 import AddComment from "./components/AddComment";
+import DeleteConfirmationModal from "./components/DeleteConfirmationModal";
 
 function App() {
   const [comments, setComments] = useState(data.comments);
+  const [showDeleteConfirmationModal, setshowDeleteConfirmationModal] =
+    useState(false);
+
+  const [commentDataToBeDeleted, setCommentDataToBeDeleted] = useState({});
 
   useEffect(() => {
     const localComments = JSON.parse(localStorage.getItem("localComments"));
@@ -53,7 +58,7 @@ function App() {
     }
   };
 
-  const AddReplyHandler = (replyingToCommentData, replyData) => {
+  const addReplyHandler = (replyingToCommentData, replyData) => {
     if (replyingToCommentData.replies) {
       setComments((prevComments) => {
         return prevComments.map((prevComment) => {
@@ -75,27 +80,62 @@ function App() {
     }
   };
 
-  const AddCommentHandler = (newCommentData) => {
+  const addCommentHandler = (newCommentData) => {
     setComments((prevComments) => {
-      prevComments.push(newCommentData);
-      return prevComments;
+      const newComments = [...prevComments, newCommentData];
+      return newComments;
+    });
+  };
+
+  const deleteButtonHandler = (commentData) => {
+    setshowDeleteConfirmationModal(true);
+    setCommentDataToBeDeleted(commentData);
+  };
+
+  const cancelButtonHandler = () => {
+    setshowDeleteConfirmationModal(false);
+  };
+
+  const confirmedDeleteHandler = () => {
+    const idOfCommentDataToBeDeleted = commentDataToBeDeleted.id;
+    setComments((prevComments) => {
+      const updatedComments = [...prevComments];
+      updatedComments.forEach((updatedComment, index) => {
+        if (updatedComment.id === idOfCommentDataToBeDeleted) {
+          updatedComments.splice(index, 1);
+        } else {
+          updatedComment.replies.forEach((reply, i) => {
+            if (reply.id === idOfCommentDataToBeDeleted) {
+              updatedComment.replies.splice(i, 1);
+            }
+          });
+        }
+      });
+      return updatedComments;
     });
   };
 
   return (
-    <div className="App">
+    <div className={showDeleteConfirmationModal ? `App disable-scroll` : `App`}>
       <div className="container">
         <CommentsList
           comments={comments}
           currentUser={data.currentUser}
           likeCountUpdater={likeCountUpdater}
-          AddReplyHandler={AddReplyHandler}
+          addReplyHandler={addReplyHandler}
+          deleteButtonHandler={deleteButtonHandler}
         />
         <AddComment
           currentUser={data.currentUser}
-          AddCommentHandler={AddCommentHandler}
+          addCommentHandler={addCommentHandler}
         />
       </div>
+      {showDeleteConfirmationModal && (
+        <DeleteConfirmationModal
+          cancelButtonHandler={cancelButtonHandler}
+          confirmedDeleteHandler={confirmedDeleteHandler}
+        />
+      )}
     </div>
   );
 }
