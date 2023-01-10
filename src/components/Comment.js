@@ -122,6 +122,7 @@ const Comment = ({
           currentUser={currentUser}
           replyingToCommentData={commentData}
           addReplyHandler={addReplyHandler}
+          replyButtonHandler={replyButtonHandler}
         />
       )}
     </>
