@@ -11,8 +11,18 @@ const Comment = ({
   likeCountUpdater,
   addReplyHandler,
   deleteButtonHandler,
+  updateCommentHandler,
 }) => {
   const [showAddComment, setShowAddComment] = useState(false);
+  const [updateComment, setUpdateComment] = useState(false);
+  const [valueOfUpdatedComment, setValueOfUpdatedComment] = useState(
+    commentData.content
+  );
+
+  const editButtonHandler = () => {
+    setUpdateComment((prevState) => !prevState);
+  };
+
   const replyButtonHandler = () => {
     setShowAddComment((prevState) => !prevState);
   };
@@ -54,11 +64,24 @@ const Comment = ({
               {dateFormatter(commentData.createdAt)}
             </span>
           </div>
-          <div className={classes.body}>
-            <span style={{ color: "#5457b6", fontWeight: "bold" }}>
-              {commentData.replyingTo ? `@${commentData.replyingTo} ` : ""}
-            </span>
-            {commentData.content}
+          <div className={classes.bodyCover}>
+            <div className={classes.body}>
+              <span style={{ color: "#5457b6", fontWeight: "bold" }}>
+                {commentData.replyingTo ? `@${commentData.replyingTo} ` : ""}
+              </span>
+              {commentData.content}
+            </div>
+            {currentUser.username === commentData.user.username &&
+              updateComment && (
+                <input
+                  className={classes.bodyInput}
+                  type="text"
+                  value={valueOfUpdatedComment}
+                  onChange={(e) => {
+                    setValueOfUpdatedComment(e.target.value);
+                  }}
+                />
+              )}
           </div>
         </div>
 
@@ -73,7 +96,11 @@ const Comment = ({
             mobileDesign={true}
             replyButtonHandler={replyButtonHandler}
             deleteButtonHandler={deleteButtonHandler}
+            editButtonHandler={editButtonHandler}
             commentData={commentData}
+            updateComment={updateComment}
+            valueOfUpdatedComment={valueOfUpdatedComment}
+            updateCommentHandler={updateCommentHandler}
           />
         </div>
         <React.Fragment>
@@ -82,7 +109,11 @@ const Comment = ({
             mobileDesign={false}
             replyButtonHandler={replyButtonHandler}
             deleteButtonHandler={deleteButtonHandler}
+            editButtonHandler={editButtonHandler}
             commentData={commentData}
+            updateComment={updateComment}
+            valueOfUpdatedComment={valueOfUpdatedComment}
+            updateCommentHandler={updateCommentHandler}
           />
         </React.Fragment>
       </div>

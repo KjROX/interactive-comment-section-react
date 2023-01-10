@@ -99,19 +99,43 @@ function App() {
   const confirmedDeleteHandler = () => {
     const idOfCommentDataToBeDeleted = commentDataToBeDeleted.id;
     setComments((prevComments) => {
-      const updatedComments = [...prevComments];
-      updatedComments.forEach((updatedComment, index) => {
-        if (updatedComment.id === idOfCommentDataToBeDeleted) {
-          updatedComments.splice(index, 1);
+      const prevCommentsInstance = [...prevComments];
+      prevCommentsInstance.forEach((prevComment, index) => {
+        if (prevComment.id === idOfCommentDataToBeDeleted) {
+          prevCommentsInstance.splice(index, 1);
         } else {
-          updatedComment.replies.forEach((reply, i) => {
+          prevComment.replies.forEach((reply, i) => {
             if (reply.id === idOfCommentDataToBeDeleted) {
-              updatedComment.replies.splice(i, 1);
+              prevComment.replies.splice(i, 1);
             }
           });
         }
       });
-      return updatedComments;
+      return prevCommentsInstance;
+    });
+  };
+
+  const updateCommentHandler = (
+    updatingCommentId,
+    updatingCommentContent,
+    updatedTime
+  ) => {
+    setComments((prevComments) => {
+      const prevCommentsInstance = [...prevComments];
+      prevCommentsInstance.forEach((prevComment) => {
+        if (prevComment.id === updatingCommentId) {
+          prevComment.content = updatingCommentContent;
+          prevComment.createdAt = updatedTime;
+        } else {
+          prevComment.replies.forEach((reply) => {
+            if (reply.id === updatingCommentId) {
+              reply.content = updatingCommentContent;
+              reply.createdAt = updatedTime;
+            }
+          });
+        }
+      });
+      return prevCommentsInstance;
     });
   };
 
@@ -124,6 +148,7 @@ function App() {
           likeCountUpdater={likeCountUpdater}
           addReplyHandler={addReplyHandler}
           deleteButtonHandler={deleteButtonHandler}
+          updateCommentHandler={updateCommentHandler}
         />
         <AddComment
           currentUser={data.currentUser}

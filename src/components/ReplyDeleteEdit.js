@@ -5,7 +5,15 @@ const ReplyDeleteEdit = ({
   replyButtonHandler,
   deleteButtonHandler,
   commentData,
+  editButtonHandler,
+  updateComment,
+  valueOfUpdatedComment,
+  updateCommentHandler,
 }) => {
+  const updateButtonHandler = () => {
+    updateCommentHandler(commentData.id, valueOfUpdatedComment, Date.now());
+    editButtonHandler();
+  };
   return (
     <div
       className={`${
@@ -23,6 +31,10 @@ const ReplyDeleteEdit = ({
           <img src="./images/icon-reply.svg" alt="" />
           Reply
         </button>
+      ) : updateComment ? (
+        <button className={classes.update} onClick={updateButtonHandler}>
+          Update
+        </button>
       ) : (
         <div className={classes.deleteEdit}>
           <button
@@ -34,7 +46,12 @@ const ReplyDeleteEdit = ({
             <img src="./images/icon-delete.svg" alt="" />
             Delete
           </button>
-          <button className={classes.edit}>
+          <button
+            className={classes.edit}
+            onClick={() => {
+              editButtonHandler();
+            }}
+          >
             <img src="./images/icon-edit.svg" alt="" />
             Edit
           </button>
