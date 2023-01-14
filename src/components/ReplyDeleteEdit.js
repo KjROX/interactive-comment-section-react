@@ -32,7 +32,11 @@ const ReplyDeleteEdit = ({
           Reply
         </button>
       ) : updateComment ? (
-        <button className={classes.update} onClick={updateButtonHandler}>
+        <button
+          className={classes.update}
+          onClick={updateButtonHandler}
+          disabled={valueOfUpdatedComment.length === 0}
+        >
           Update
         </button>
       ) : (
